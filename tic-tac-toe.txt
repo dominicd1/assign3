@@ -1,0 +1,53 @@
+Cloned the repo and got my environment set up.
+
+Started editing my main.jsx file, adding the simple square component. 
+I used fragments to wrap multiple JSX elements, and grouped them into rows 
+with divs, ultimately making up the board component.
+
+Added the value prop to the square component, allowing me to pass custom values
+into the square component, so that the text displayed is different.
+
+Added a function to handle clicks for the button element.
+
+Removed the value prop and added setValue to the handleClick function, writing
+'X' into the squares that have been clicked.
+
+Moved all state handling logic into the parent Board component, creating a squares
+array to track the state of each square.
+
+Changed square component to only render a value that is passed in as prop. 
+Inside of it is a callback function that detects clicks and defers the click
+handling logic to the Board, which has a handleClick() function
+
+Wrote the handleClick() function, which triggers a state update for the squares
+state variable, writing in an X into the respective square position
+
+Passed in the onSquareClick() function to each square component, indexed
+by their position in the grid, allowing each square to track clicks and 
+update the grid appropriately.
+
+Added a state tracker for which person's turn it is, meaning X or O. Checking the win
+condition was also added.
+
+Added a new top level component named Game. Convert board to take prop values to render
+updates, rather than keeping track of state independently. State tracking is now handled
+by the history array, which keeps track of every snapshot of every round of the game.
+
+When clicks are detected, the Board component notifies the Game object through onPlay(),
+then the Board object handles the play with the new grid object.
+
+Added a function to map the history array to react components called moves, each with a 
+description based on the move number. 
+
+Implemented jumpTo functionality, using a currentMove tracker to keep track of game move 
+state. The jumpTo function updates this currentMove state tracker.
+
+Updated the handlePlay function, allowing the history to be rewritten based on the move 
+you to jump to. It saves the history of everything up until the current move, discarding
+the rest. Then, it takes your current action and appends that to history.
+
+Finally, the Game component renders the current move, rather than rendering the final move,
+indexing into history[currentMove];
+
+Cleaned up the xIsNext state declaration, having it alternate on every turn based on the % 
+operator.
